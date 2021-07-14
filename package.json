@@ -1,0 +1,48 @@
+{
+  "name": "my-blog",
+  "version": "0.1.0",
+  "description": "my blog",
+  "scripts": {
+    "start": "cross-env mode=dev webpack-dev-server --config ./scripts/config/webpack.config.dev.ts",
+    "start:prod": "cross-env mode=prod webpack --config ./scripts/config/webpack.config.dev.ts",
+    "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.config.prod.ts"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "YaoJun",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@babel/runtime-corejs3": "^7.14.7",
+    "@types/mini-css-extract-plugin": "^2.0.1",
+    "@types/node": "^16.3.1",
+    "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "autoprefixer": "^10.3.1",
+    "babel-loader": "^8.2.2",
+    "core-js": "3",
+    "css-loader": "^5.2.7",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "mini-css-extract-plugin": "^2.1.0",
+    "postcss-loader": "^6.1.1",
+    "prettier": "^2.3.2",
+    "sass": "^1.35.2",
+    "sass-loader": "^12.1.0",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.8.0"
+  }
+}
