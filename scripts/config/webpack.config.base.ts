@@ -1,26 +1,28 @@
-import { join, resolve } from "path"
+import { resolve } from "path"
 import webpack from "webpack"
-import { PROJECT_PATH } from "../constants"
+import { PUBLIC_PATH, PROJECT_NAME, PROJECT_PATH } from "../constants"
+import CopyPlugin from "copy-webpack-plugin"
+import HtmlWebpackPlugin from "html-webpack-plugin"
 import MiniCssExtractPlugin from "mini-css-extract-plugin"
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
 
 const isProd = process.env.NODE_ENV === "production"
-console.log(resolve(PROJECT_PATH, "./src/index.ts"))
 const baseConfig: webpack.Configuration = {
   entry: {
     app: resolve(PROJECT_PATH, "./src/index.ts"),
   },
   output: {
-    publicPath: "/",
+    publicPath: PUBLIC_PATH,
     path: resolve(PROJECT_PATH, "./dist"),
-    filename: "bundle.js",
+    filename: `static/js/[name].${isProd ? "[hash:8]" : ""}.js`,
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".json"],
     alias: {
-      "@": join(PROJECT_PATH, "./src"),
-      Common: join(PROJECT_PATH, "./src/common"),
-      Components: join(PROJECT_PATH, "./src/components"),
-      Utils: join(PROJECT_PATH, "./src/utils"),
+      "@": resolve(PROJECT_PATH, "./src"),
+      Common: resolve(PROJECT_PATH, "./src/common"),
+      Components: resolve(PROJECT_PATH, "./src/components"),
+      Utils: resolve(PROJECT_PATH, "./src/utils"),
     },
   },
   module: {
@@ -66,6 +68,43 @@ const baseConfig: webpack.Configuration = {
       },
     ],
   },
+  plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      //ts错误显示在终端中
+      typescript: {
+        configFile: resolve(PROJECT_PATH, "./tsconfig.json"),
+      },
+    }),
+    new MiniCssExtractPlugin({
+      filename: "static/css/[name].[contenthash:8].css",
+      chunkFilename: "static/css/[name].[contenthash:8].css",
+      ignoreOrder: false,
+    }),
+
+    new HtmlWebpackPlugin({
+      title: PROJECT_NAME,
+      template: resolve(PROJECT_PATH, "./public/index.html"),
+      filename: "index.html",
+      publicPath: PUBLIC_PATH,
+      cache: false,
+      minify: isProd
+        ? {
+            removeAttributeQuotes: true,
+            collapseWhitespace: true,
+            removeComments: true,
+            collapseBooleanAttributes: true,
+            collapseInlineTagWhitespace: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            minifyCSS: true,
+            minifyJS: true,
+            minifyURLs: true,
+            useShortDoctype: true,
+          }
+        : false,
+    }),
+  ],
 }
 
 export default baseConfig
