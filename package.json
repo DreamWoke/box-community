@@ -3,9 +3,23 @@
   "version": "0.1.0",
   "description": "my blog",
   "scripts": {
+    "lint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js src",
     "start": "cross-env mode=dev webpack-dev-server --config ./scripts/config/webpack.config.dev.ts",
     "start:prod": "cross-env mode=prod webpack --config ./scripts/config/webpack.config.dev.ts",
     "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.config.prod.ts"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "eslint --config .eslintrc.js"
+    ],
+    "*.{ts,tsx,js,json,html,yml,css,less,scss,md}": [
+      "prettier --write"
+    ]
   },
   "keywords": [
     "blog"
@@ -32,6 +46,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.1",
     "mini-css-extract-plugin": "^2.1.0",
     "postcss-loader": "^6.1.1",
     "prettier": "^2.3.2",
