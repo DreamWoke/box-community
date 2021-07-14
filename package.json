@@ -37,6 +37,7 @@
     "@types/friendly-errors-webpack-plugin": "^0.1.4",
     "@types/mini-css-extract-plugin": "^2.0.1",
     "@types/node": "^16.3.1",
+    "@types/react-dom": "^17.0.9",
     "@types/webpack": "^5.28.0",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",

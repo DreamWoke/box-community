@@ -1,7 +1,6 @@
 import { resolve } from "path"
 import webpack from "webpack"
 import { PUBLIC_PATH, PROJECT_NAME, PROJECT_PATH } from "../constants"
-import CopyPlugin from "copy-webpack-plugin"
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import MiniCssExtractPlugin from "mini-css-extract-plugin"
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
@@ -80,7 +79,6 @@ const baseConfig: webpack.Configuration = {
       chunkFilename: "static/css/[name].[contenthash:8].css",
       ignoreOrder: false,
     }),
-
     new HtmlWebpackPlugin({
       title: PROJECT_NAME,
       template: resolve(PROJECT_PATH, "./public/index.html"),
