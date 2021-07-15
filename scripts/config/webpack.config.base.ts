@@ -8,7 +8,7 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
 const isProd = process.env.NODE_ENV === "production"
 const baseConfig: webpack.Configuration = {
   entry: {
-    app: resolve(PROJECT_PATH, "./src/index.ts"),
+    app: resolve(PROJECT_PATH, "./src/index.tsx"),
   },
   output: {
     publicPath: PUBLIC_PATH,
