@@ -22,5 +22,6 @@ module.exports = {
   rules: {
     "prettier/prettier": [WARN, { endOfLine: "auto" }],
     "@typescript-eslint/no-var-requires": OFF,
+    "@typescript-eslint/no-unused-vars": OFF,
   },
 }

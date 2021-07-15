@@ -15,9 +15,10 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --config .eslintrc.js"
+    ],
+    "*.{ts,tsx,js,json,html,yml,css,less,scss,md}": [
+      "prettier --write"
     ]
   },
   "keywords": [
@@ -53,7 +54,7 @@
     "fork-ts-checker-webpack-plugin": "^6.2.12",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^5.3.2",
-    "husky": "^7.0.1",
+    "husky": "^4.3.0",
     "lint-staged": "^11.0.1",
     "mini-css-extract-plugin": "^2.1.0",
     "postcss-loader": "^6.1.1",
