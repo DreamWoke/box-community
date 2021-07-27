@@ -4,7 +4,7 @@
   "description": "my blog",
   "scripts": {
     "lint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js src",
-    "start": "cross-env mode=dev webpack-dev-server --config ./scripts/config/webpack.config.dev.ts",
+    "start": "cross-env NODE_ENV=development mode=dev webpack-dev-server --config ./scripts/config/webpack.config.dev.ts",
     "start:prod": "cross-env mode=prod webpack --config ./scripts/config/webpack.config.dev.ts",
     "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.config.prod.ts"
   },
@@ -38,6 +38,7 @@
     "@types/mini-css-extract-plugin": "^2.0.1",
     "@types/node": "^16.3.1",
     "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.8",
     "@types/webpack": "^5.28.0",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
@@ -75,6 +76,7 @@
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.1.0"
   }
 }
