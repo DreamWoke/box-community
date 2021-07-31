@@ -1,7 +1,6 @@
-import MainPage from "@/page/main"
-import React, { Suspense } from "react"
-import { BrowserRouter as Router, Switch, Route, Redirect, RouteComponentProps } from "react-router-dom"
-const Main = React.lazy(() => import(/* webpackChunkName: "Main" */ "@/page/main"))
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Switch, Route, Redirect, RouteComponentProps } from "react-router-dom";
+const Main = React.lazy(() => import(/* webpackChunkName: "Main" */ "@/page/main"));
 
 const Routes: React.FC = () => {
   return (
@@ -10,12 +9,12 @@ const Routes: React.FC = () => {
         <Suspense fallback={<div />}>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/main" />} />
-            <Route exact path="/main" component={MainPage} />
+            <Route exact path="/main" component={Main} />
           </Switch>
         </Suspense>
       </Router>
     </>
-  )
-}
+  );
+};
 
-export default Routes
+export default Routes;

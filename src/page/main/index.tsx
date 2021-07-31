@@ -1,8 +1,13 @@
-import React from "react"
-import "./index.scss"
+import React from "react";
+import Title from "@/components/Title";
+import { Row } from "antd";
 
 const MainPage: React.FC = () => {
-  return <div>main</div>
-}
+  return (
+    <Row justify="center">
+      <Title />
+    </Row>
+  );
+};
 
-export default MainPage
+export default MainPage;

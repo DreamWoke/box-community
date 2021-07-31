@@ -1,11 +1,11 @@
-import { resolve } from "path"
-import webpack from "webpack"
-import { PUBLIC_PATH, PROJECT_NAME, PROJECT_PATH } from "../constants"
-import HtmlWebpackPlugin from "html-webpack-plugin"
-import MiniCssExtractPlugin from "mini-css-extract-plugin"
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
+import { resolve } from "path";
+import webpack from "webpack";
+import { PUBLIC_PATH, PROJECT_NAME, PROJECT_PATH } from "../constants";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
-const isProd = process.env.NODE_ENV === "production"
+const isProd = process.env.NODE_ENV === "production";
 const baseConfig: webpack.Configuration = {
   entry: {
     app: resolve(PROJECT_PATH, "./src/index.tsx"),
@@ -103,6 +103,6 @@ const baseConfig: webpack.Configuration = {
         : false,
     }),
   ],
-}
+};
 
-export default baseConfig
+export default baseConfig;
