@@ -1,8 +1,9 @@
 import { Col, Row } from "antd";
 import React, { useState } from "react";
-import { Menu, Avatar } from "antd";
+import { Menu, Avatar, Image } from "antd";
 import { useHistory } from "react-router-dom";
-import { BellOutlined, UserOutlined } from "@ant-design/icons";
+import Icon, { BellFilled, BellOutlined, UserOutlined } from "@ant-design/icons";
+import Vat from "@/image/vat.jpg";
 import "./index.scss";
 
 const Title: React.FC = () => {
@@ -35,10 +36,10 @@ const Title: React.FC = () => {
           <Col span={4}>
             <div className="title-row-right">
               <div className="notifications">
-                <BellOutlined />
+                <BellFilled />
               </div>
-              <div className="">
-                <Avatar shape="square" size={30} icon={<UserOutlined />} />
+              <div className="avatar">
+                <Image width={30} preview={false} src={Vat} />
               </div>
             </div>
           </Col>

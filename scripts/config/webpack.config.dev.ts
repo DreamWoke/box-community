@@ -1,9 +1,9 @@
-import webpack from "webpack"
-const { merge } = require("webpack-merge")
-import proxySetting from "../proxy"
-import baseConfig from "./webpack.config.base"
-import { SERVER_HOST, SERVER_PORT } from "../constants"
-import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin"
+import webpack from "webpack";
+const { merge } = require("webpack-merge");
+import proxySetting from "../proxy";
+import baseConfig from "./webpack.config.base";
+import { SERVER_HOST, SERVER_PORT } from "../constants";
+import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 
 const devConfig: webpack.Configuration = merge(baseConfig, {
   mode: "development",
@@ -29,6 +29,6 @@ const devConfig: webpack.Configuration = merge(baseConfig, {
     }),
   ],
   stats: "errors-only",
-})
+});
 
-export default devConfig
+export default devConfig;
