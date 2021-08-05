@@ -16,6 +16,10 @@
       text-shadow: -1px -1px 1px #aaa, 0px 4px 1px rgba(0, 0, 0, 0.5), 4px 4px 5px rgba(0, 0, 0, 0.7),
         0px 0px 7px rgba(0, 0, 0, 0.4);
     }
+    &-search {
+      display: flex;
+      align-items: center;
+    }
     &-nav {
       .ant-menu {
         line-height: 52px;
@@ -49,6 +53,18 @@
           cursor: pointer;
         }
       }
+      .avatar {
+        img {
+          cursor: pointer;
+          border-radius: 1px;
+        }
+      }
     }
+  }
+}
+.avatar-dropdown {
+  .ant-dropdown-menu-item {
+    padding: 5px 15px;
+    color: #8590a6;
   }
 }

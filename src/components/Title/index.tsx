@@ -1,10 +1,12 @@
-import { Col, Row } from "antd";
+import { Col, Popover, Row, Menu, Image, Input } from "antd";
 import React, { useState } from "react";
-import { Menu, Avatar, Image } from "antd";
 import { useHistory } from "react-router-dom";
 import Icon, { BellFilled, BellOutlined, UserOutlined } from "@ant-design/icons";
 import Vat from "@/image/vat.jpg";
+import Avatar from "./Avatar";
 import "./index.scss";
+
+const { Search } = Input;
 
 const Title: React.FC = () => {
   const history = useHistory();
@@ -16,14 +18,17 @@ const Title: React.FC = () => {
     console.log("click ", e);
     setCurrent(e.key);
   };
+  const onSearch = () => {
+    console.log("search");
+  };
   return (
     <Col span={24}>
       <div className="title">
         <Row className="title-row">
-          <Col span={2} offset={4} onClick={toMain}>
+          <Col span={2} offset={5} onClick={toMain}>
             <div className="title-row-icon">Box</div>
           </Col>
-          <Col span={8}>
+          <Col span={4}>
             <div className="title-row-nav">
               <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
                 <Menu.Item key="mail">首页</Menu.Item>
@@ -31,7 +36,11 @@ const Title: React.FC = () => {
                 <Menu.Item key="app3">分类二</Menu.Item>
               </Menu>
             </div>
-            <div className="title-row-search"></div>
+          </Col>
+          <Col span={4}>
+            <div className="title-row-search">
+              <Search placeholder="" allowClear enterButton="搜索" size="middle" onSearch={onSearch} />
+            </div>
           </Col>
           <Col span={4}>
             <div className="title-row-right">
@@ -39,7 +48,7 @@ const Title: React.FC = () => {
                 <BellFilled />
               </div>
               <div className="avatar">
-                <Image width={30} preview={false} src={Vat} />
+                <Avatar />
               </div>
             </div>
           </Col>
