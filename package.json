@@ -1,7 +1,7 @@
 {
-  "name": "my-blog",
+  "name": "box-community",
   "version": "0.1.0",
-  "description": "my blog",
+  "description": "box-community",
   "scripts": {
     "lint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js src --fix",
     "start": "cross-env NODE_ENV=development mode=dev webpack-dev-server --config ./scripts/config/webpack.config.dev.ts",

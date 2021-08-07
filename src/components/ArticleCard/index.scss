@@ -1,0 +1,29 @@
+.article-card {
+  width: 720px;
+  padding: 20px;
+  margin: 10px auto;
+  background: #fff;
+  &-title {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      color: #175199;
+    }
+  }
+  &-content {
+    margin-top: 9px;
+    white-space: normal;
+    font-size: 15px;
+    color: #121212;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  &-footer {
+    margin-top: 20px;
+  }
+}

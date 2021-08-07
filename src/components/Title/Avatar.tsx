@@ -6,7 +6,7 @@ const Avatar: React.FC = () => {
   return (
     <Dropdown
       arrow
-      placement="bottomCenter"
+      placement="bottomLeft"
       overlayStyle={{ position: "fixed" }}
       overlayClassName="avatar-dropdown"
       overlay={

@@ -2,7 +2,6 @@ import { Col, Popover, Row, Menu, Image, Input } from "antd";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Icon, { BellFilled, BellOutlined, UserOutlined } from "@ant-design/icons";
-import Vat from "@/image/vat.jpg";
 import Avatar from "./Avatar";
 import "./index.scss";
 
@@ -25,24 +24,25 @@ const Title: React.FC = () => {
     <Col span={24}>
       <div className="title">
         <Row className="title-row">
-          <Col span={2} offset={5} onClick={toMain}>
+          <Col span={1} onClick={toMain}>
             <div className="title-row-icon">Box</div>
           </Col>
-          <Col span={4}>
+          <Col span={6} offset={5}>
             <div className="title-row-nav">
               <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
                 <Menu.Item key="mail">首页</Menu.Item>
-                <Menu.Item key="app2">分类一</Menu.Item>
-                <Menu.Item key="app3">分类二</Menu.Item>
+                <Menu.Item key="app2">推荐</Menu.Item>
+                <Menu.Item key="app3">分类一</Menu.Item>
+                <Menu.Item key="app4">分类二</Menu.Item>
               </Menu>
             </div>
           </Col>
-          <Col span={4}>
+          <Col span={6}>
             <div className="title-row-search">
               <Search placeholder="" allowClear enterButton="搜索" size="middle" onSearch={onSearch} />
             </div>
           </Col>
-          <Col span={4}>
+          <Col span={4} offset={2}>
             <div className="title-row-right">
               <div className="notifications">
                 <BellFilled />

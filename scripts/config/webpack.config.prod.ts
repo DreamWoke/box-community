@@ -1,10 +1,10 @@
-const { merge } = require("webpack-merge")
-import baseConfig from "./webpack.config.base"
-import { PROJECT_PATH } from "../constants"
-import CopyPlugin from "copy-webpack-plugin"
-import { CleanWebpackPlugin } from "clean-webpack-plugin"
-import webpack from "webpack"
-import { resolve } from "path"
+const { merge } = require("webpack-merge");
+import baseConfig from "./webpack.config.base";
+import { PROJECT_PATH } from "../constants";
+import CopyPlugin from "copy-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import webpack from "webpack";
+import { resolve } from "path";
 // const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer")
 
 const prodConfig: webpack.Configuration = merge(baseConfig, {
@@ -28,6 +28,6 @@ const prodConfig: webpack.Configuration = merge(baseConfig, {
     //   analyzerPort: 8888, // 端口号设置
     // }),
   ],
-})
+});
 
-export default prodConfig
+export default prodConfig;
