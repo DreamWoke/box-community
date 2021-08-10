@@ -1,5 +1,4 @@
 .article-card {
-  width: 720px;
   padding: 20px;
   margin: 10px auto;
   background: #fff;
@@ -25,5 +24,14 @@
   }
   &-footer {
     margin-top: 20px;
+    Button {
+      background: rgba(0, 102, 255, 0.1);
+      color: #06f;
+      border: none;
+      &:hover {
+        background-color: rgba(0, 102, 255, 0.15);
+        color: #06f;
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { CaretUpOutlined } from "@ant-design/icons";
+import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
 import "./index.scss";
 import { Button } from "antd";
 
@@ -13,11 +13,13 @@ const ArticleCard: React.FC = () => {
         内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本
       </div>
       <div className="article-card-footer">
-        <Button type="primary">
+        <Button>
           <CaretUpOutlined />
           赞同155
         </Button>
-        <Button type="primary"></Button>
+        <Button style={{ marginLeft: "5px" }}>
+          <CaretDownOutlined />
+        </Button>
       </div>
     </div>
   );

@@ -1,0 +1,24 @@
+.sidebar {
+  margin: 10px;
+  padding: 20px 10px;
+  background: #fff;
+  &-operate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    .btn {
+      display: flex;
+      cursor: pointer;
+      flex: 1;
+      flex-direction: column;
+      &:hover {
+        color: #175199;
+      }
+      &-icon {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
