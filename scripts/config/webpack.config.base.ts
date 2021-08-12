@@ -12,9 +12,9 @@ const themeVariables = getLessVars(path.join(STYLE_PATH, "basic.less"));
 const darkVars = getLessVars(path.join(STYLE_PATH, "theme/dark.less"));
 const lightVars = getLessVars(path.join(STYLE_PATH, "theme/compact.less"));
 
-fs.writeFileSync(path.join(STYLE_PATH, "dark.json"), JSON.stringify(darkVars));
-fs.writeFileSync(path.join(STYLE_PATH, "light.json"), JSON.stringify(lightVars));
-fs.writeFileSync(path.join(STYLE_PATH, "theme.json"), JSON.stringify(themeVariables));
+fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/dark.json"), JSON.stringify(darkVars));
+fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/light.json"), JSON.stringify(lightVars));
+fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/theme.json"), JSON.stringify(themeVariables));
 
 const options = {
   stylesDir: STYLE_PATH,
