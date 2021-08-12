@@ -22,7 +22,10 @@
     ]
   },
   "keywords": [
-    "blog"
+    "box community",
+    "react",
+    "typescript",
+    "webpack"
   ],
   "author": "YaoJun",
   "license": "ISC",
