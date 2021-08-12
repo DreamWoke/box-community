@@ -5,4 +5,4 @@ export const ENV = {
   prod: {
     api: "prodApi",
   },
-}
+};

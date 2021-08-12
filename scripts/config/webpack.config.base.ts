@@ -1,27 +1,25 @@
 import fs from "fs";
 import webpack from "webpack";
 import path, { resolve } from "path";
-import { PUBLIC_PATH, PROJECT_NAME, PROJECT_PATH } from "../constants";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 const AntDesignThemePlugin = require("antd-theme-webpack-plugin");
 const { getLessVars } = require("antd-theme-generator");
-// style-path
-const themePath = path.join(__dirname, "../../src/style");
+import { PUBLIC_PATH, PROJECT_NAME, PROJECT_PATH, STYLE_PATH } from "../constants";
 
-const themeVariables = getLessVars(path.join(themePath, "basic.less"));
-console.log(path.join(themePath, "basic.less"));
-const darkVars = getLessVars(path.join(themePath, "theme/dark.less"));
-const lightVars = getLessVars(path.join(themePath, "theme/compact.less"));
-fs.writeFileSync(path.join(themePath, "dark.json"), JSON.stringify(darkVars));
-fs.writeFileSync(path.join(themePath, "light.json"), JSON.stringify(lightVars));
-fs.writeFileSync(path.join(themePath, "theme.json"), JSON.stringify(themeVariables));
+const themeVariables = getLessVars(path.join(STYLE_PATH, "basic.less"));
+const darkVars = getLessVars(path.join(STYLE_PATH, "theme/dark.less"));
+const lightVars = getLessVars(path.join(STYLE_PATH, "theme/compact.less"));
+
+fs.writeFileSync(path.join(STYLE_PATH, "dark.json"), JSON.stringify(darkVars));
+fs.writeFileSync(path.join(STYLE_PATH, "light.json"), JSON.stringify(lightVars));
+fs.writeFileSync(path.join(STYLE_PATH, "theme.json"), JSON.stringify(themeVariables));
 
 const options = {
-  stylesDir: themePath,
+  stylesDir: STYLE_PATH,
   antDir: path.join(__dirname, "../../node_modules/antd"),
-  varFile: path.join(themePath, "basic.less"),
+  varFile: path.join(STYLE_PATH, "basic.less"),
   themeVariables: Array.from(
     new Set([...Object.keys(darkVars), ...Object.keys(lightVars), ...Object.keys(themeVariables)])
   ),
@@ -56,16 +54,7 @@ const baseConfig: webpack.Configuration = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(css|scss)$/,
-        use: [
-          { loader: isProd ? MiniCssExtractPlugin.loader : "style-loader" },
-          { loader: "css-loader" },
-          { loader: "postcss-loader" },
-          { loader: "sass-loader" },
-        ],
-      },
-      {
-        test: /\.less$/,
+        test: /\.(css|less)$/,
         use: [
           { loader: isProd ? MiniCssExtractPlugin.loader : "style-loader" },
           { loader: "css-loader" },

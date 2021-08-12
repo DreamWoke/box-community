@@ -1,6 +1,5 @@
 {
   "@theme": "dark",
-  "@menu-highlight-color": "#f5f5f5",
   "@blue-1": "mix(color(~`colorPalette(\"@{blue-base}\", 8) `), @component-background, 15%)",
   "@blue-2": "mix(color(~`colorPalette(\"@{blue-base}\", 7) `), @component-background, 25%)",
   "@blue-3": "mix(@blue-base, @component-background, 30%)",
@@ -280,7 +279,9 @@
   "@timeline-color": "@border-color-split",
   "@timeline-dot-color": "@primary-color",
   "@mentions-dropdown-bg": "@popover-background",
+  "@menu-highlight-color": "rgb(240, 246, 252, 0.7)",
   "@article-card-bg": "#262626",
   "@title-bg": "#161b22",
-  "@title-shadow": "#333"
+  "@title-shadow": "#333",
+  "@title-hover": "#58a6ff"
 }

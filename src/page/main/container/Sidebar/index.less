@@ -1,6 +1,8 @@
+@import "@/style/basic.less";
 .sidebar {
   margin: 10px;
-  padding: 20px 10px;
+  padding: 25px 10px;
+  background: @title-bg;
   &-operate {
     display: flex;
     justify-content: center;
@@ -12,7 +14,7 @@
       flex: 1;
       flex-direction: column;
       &:hover {
-        color: #175199;
+        color: @title-hover;
       }
       &-icon {
         font-size: 20px;

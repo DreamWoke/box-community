@@ -1,7 +1,7 @@
 import { Col, Popover, Row, Menu, Image, Input, Switch } from "antd";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Icon, { BellFilled, CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import Icon, { BellOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import Avatar from "./Avatar";
 import darkTheme from "@/style/dark.json";
 import lightTheme from "@/style/light.json";
@@ -67,7 +67,7 @@ const Title: React.FC = () => {
                 />
               </div>
               <div className="notifications">
-                <BellFilled />
+                <BellOutlined />
               </div>
               <div className="avatar">
                 <Avatar />

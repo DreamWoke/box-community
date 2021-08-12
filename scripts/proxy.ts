@@ -4,6 +4,6 @@ const proxySettings = {
     target: "http://localhost:3000",
     changeOrigin: true,
   },
-}
+};
 
-export default proxySettings
+export default proxySettings;

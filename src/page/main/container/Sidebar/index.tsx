@@ -1,5 +1,5 @@
 import React from "react";
-import { EditOutlined, BulbOutlined } from "@ant-design/icons";
+import { EditOutlined, BulbOutlined, HeartOutlined } from "@ant-design/icons";
 import "./index.less";
 import { useHistory } from "react-router";
 
@@ -15,6 +15,10 @@ const Sidebar: React.FC = () => {
         <div className="btn">
           <BulbOutlined className="btn-icon" />
           <div>发布动态</div>
+        </div>
+        <div className="btn">
+          <HeartOutlined className="btn-icon" />
+          <div>我的收藏</div>
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 @import "~antd/lib/style/themes/default.less";
 
 @theme: dark;
-@menu-highlight-color: #f5f5f5;
 // color palettes
 @blue-1: mix(color(~`colorPalette("@{blue-base}", 8) `), @component-background, 15%);
 @blue-2: mix(color(~`colorPalette("@{blue-base}", 7) `), @component-background, 25%);
@@ -437,13 +436,21 @@
 @mentions-dropdown-bg: @popover-background;
 
 // my-dark-less
+@menu-highlight-color: rgb(240, 246, 252, 0.7);
 @article-card-bg: #262626;
 @title-bg: #161b22;
 @title-shadow: #333;
+@title-hover: #58a6ff;
 .article-card {
   background: @article-card-bg;
 }
 .title {
   background: @title-bg;
   box-shadow: 0 2px 8px @title-shadow;
+}
+.sidebar {
+  background: @title-bg;
+  .btn:hover {
+    color: @title-hover;
+  }
 }
