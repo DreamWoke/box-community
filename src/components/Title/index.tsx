@@ -1,7 +1,7 @@
 import { Col, Popover, Row, Menu, Image, Input, Switch } from "antd";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Icon, { BellOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { BellOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import Avatar from "./Avatar";
 import darkTheme from "@/style/dark.json";
 import lightTheme from "@/style/light.json";

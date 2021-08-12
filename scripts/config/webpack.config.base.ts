@@ -6,22 +6,28 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 const AntDesignThemePlugin = require("antd-theme-webpack-plugin");
 const { getLessVars } = require("antd-theme-generator");
-import { PUBLIC_PATH, PROJECT_NAME, PROJECT_PATH, STYLE_PATH } from "../constants";
+import { PUBLIC_PATH, PROJECT_NAME, PROJECT_PATH, STYLE_PATH, ANTD_PATH } from "../constants";
 
 const themeVariables = getLessVars(path.join(STYLE_PATH, "basic.less"));
-const darkVars = getLessVars(path.join(STYLE_PATH, "theme/dark.less"));
-const lightVars = getLessVars(path.join(STYLE_PATH, "theme/compact.less"));
+const antDarkVars = getLessVars(path.join(ANTD_PATH, "lib/style/themes/dark.less"));
+const myDarkVars = getLessVars(path.join(STYLE_PATH, "theme/dark.less"));
+const antLightVars = getLessVars(path.join(ANTD_PATH, "lib/style/themes/compact.less"));
+const myLightVars = getLessVars(path.join(STYLE_PATH, "theme/compact.less"));
 
-fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/dark.json"), JSON.stringify(darkVars));
-fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/light.json"), JSON.stringify(lightVars));
+fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/dark.json"), JSON.stringify({ ...antDarkVars, ...myDarkVars }));
+fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/light.json"), JSON.stringify({ ...antLightVars, ...myLightVars }));
 fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/theme.json"), JSON.stringify(themeVariables));
 
 const options = {
   stylesDir: STYLE_PATH,
-  antDir: path.join(__dirname, "../../node_modules/antd"),
+  antDir: ANTD_PATH,
   varFile: path.join(STYLE_PATH, "basic.less"),
   themeVariables: Array.from(
-    new Set([...Object.keys(darkVars), ...Object.keys(lightVars), ...Object.keys(themeVariables)])
+    new Set([
+      ...Object.keys({ ...antDarkVars, ...myDarkVars }),
+      ...Object.keys({ ...antLightVars, ...myLightVars }),
+      ...Object.keys(themeVariables),
+    ])
   ),
   generateOnce: false,
 };
