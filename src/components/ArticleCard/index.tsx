@@ -1,6 +1,6 @@
 import React from "react";
 import { CaretUpOutlined, CaretDownOutlined } from "@ant-design/icons";
-import "./index.scss";
+import "./index.less";
 import { Button } from "antd";
 
 const ArticleCard: React.FC = () => {

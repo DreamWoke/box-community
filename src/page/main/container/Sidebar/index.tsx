@@ -1,12 +1,14 @@
 import React from "react";
 import { EditOutlined, BulbOutlined } from "@ant-design/icons";
-import "./index.scss";
+import "./index.less";
+import { useHistory } from "react-router";
 
 const Sidebar: React.FC = () => {
+  const history = useHistory();
   return (
     <div className="sidebar">
       <div className="sidebar-operate">
-        <div className="btn">
+        <div className="btn" onClick={() => history.push("/edit")}>
           <EditOutlined className="btn-icon" />
           <div>发布文章</div>
         </div>

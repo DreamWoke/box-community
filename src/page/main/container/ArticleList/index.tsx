@@ -1,7 +1,7 @@
 import React from "react";
 import ArticleCard from "@/components/ArticleCard";
 import { Avatar, List } from "antd";
-import "./index.scss";
+import "./index.less";
 
 const ArticleList: React.FC = () => {
   const data = [

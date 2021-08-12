@@ -1,17 +1,31 @@
-import { Col, Popover, Row, Menu, Image, Input } from "antd";
+import { Col, Popover, Row, Menu, Image, Input, Switch } from "antd";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Icon, { BellFilled, BellOutlined, UserOutlined } from "@ant-design/icons";
+import Icon, { BellFilled, CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import Avatar from "./Avatar";
-import "./index.scss";
+import darkTheme from "@/style/dark.json";
+import lightTheme from "@/style/light.json";
+import "./index.less";
 
 const { Search } = Input;
 
 const Title: React.FC = () => {
   const history = useHistory();
   const [current, setCurrent] = useState<string>("mail");
+  const [theme, setTheme] = useState<string>("");
   const toMain = () => {
-    history.push("/main");
+    console.log("toMain");
+  };
+  const onModeSwitch = (mode: boolean) => {
+    if (mode) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      window.less.modifyVars(darkTheme);
+    } else {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      window.less.modifyVars(lightTheme);
+    }
   };
   const handleClick = (e: { key: React.SetStateAction<string> }) => {
     console.log("click ", e);
@@ -37,13 +51,21 @@ const Title: React.FC = () => {
               </Menu>
             </div>
           </Col>
-          <Col span={6}>
+          <Col span={4} offset={2}>
             <div className="title-row-search">
               <Search placeholder="" allowClear enterButton="搜索" size="middle" onSearch={onSearch} />
             </div>
           </Col>
-          <Col span={4} offset={2}>
+          <Col span={6}>
             <div className="title-row-right">
+              <div className="switch-mode">
+                <Switch
+                  onChange={onModeSwitch}
+                  // checkedChildren={<CheckOutlined />}
+                  // unCheckedChildren={<CloseOutlined />}
+                  defaultChecked={false}
+                />
+              </div>
               <div className="notifications">
                 <BellFilled />
               </div>

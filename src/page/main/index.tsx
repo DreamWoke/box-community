@@ -1,7 +1,6 @@
 import React from "react";
 import ArticleList from "@/page/main/container/ArticleList";
 import { Col, Row } from "antd";
-import "./index.scss";
 import Sidebar from "./container/Sidebar";
 
 const MainPage: React.FC = () => {
