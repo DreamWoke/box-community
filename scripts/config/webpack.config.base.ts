@@ -15,6 +15,7 @@ const antLightVars = getLessVars(resolve(ANTD_PATH, "./lib/style/themes/compact.
 const myLightVars = getLessVars(resolve(STYLE_PATH, "./theme/compact.less"));
 console.log(STYLE_PATH);
 console.log(process.cwd());
+console.log(__dirname);
 fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/dark.json"), JSON.stringify({ ...antDarkVars, ...myDarkVars }));
 fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/light.json"), JSON.stringify({ ...antLightVars, ...myLightVars }));
 fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/theme.json"), JSON.stringify(themeVariables));
