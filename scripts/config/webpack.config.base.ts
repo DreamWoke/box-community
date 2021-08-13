@@ -8,20 +8,21 @@ const AntDesignThemePlugin = require("antd-theme-webpack-plugin");
 const { getLessVars } = require("antd-theme-generator");
 import { PUBLIC_PATH, PROJECT_NAME, PROJECT_PATH, STYLE_PATH, ANTD_PATH } from "../constants";
 
-const themeVariables = getLessVars(path.join(STYLE_PATH, "basic.less"));
-const antDarkVars = getLessVars(path.join(ANTD_PATH, "lib/style/themes/dark.less"));
-const myDarkVars = getLessVars(path.join(STYLE_PATH, "theme/dark.less"));
-const antLightVars = getLessVars(path.join(ANTD_PATH, "lib/style/themes/compact.less"));
-const myLightVars = getLessVars(path.join(STYLE_PATH, "theme/compact.less"));
-
-fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/dark.json"), JSON.stringify({ ...antDarkVars, ...myDarkVars }));
-fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/light.json"), JSON.stringify({ ...antLightVars, ...myLightVars }));
-fs.writeFileSync(path.join(STYLE_PATH, "theme_Json/theme.json"), JSON.stringify(themeVariables));
+const themeVariables = getLessVars(resolve(STYLE_PATH, "./basic.less"));
+const antDarkVars = getLessVars(resolve(ANTD_PATH, "./lib/style/themes/dark.less"));
+const myDarkVars = getLessVars(resolve(STYLE_PATH, "./theme/dark.less"));
+const antLightVars = getLessVars(resolve(ANTD_PATH, "./lib/style/themes/compact.less"));
+const myLightVars = getLessVars(resolve(STYLE_PATH, "./theme/compact.less"));
+console.log(STYLE_PATH);
+console.log(process.cwd());
+fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/dark.json"), JSON.stringify({ ...antDarkVars, ...myDarkVars }));
+fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/light.json"), JSON.stringify({ ...antLightVars, ...myLightVars }));
+fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/theme.json"), JSON.stringify(themeVariables));
 
 const options = {
   stylesDir: STYLE_PATH,
   antDir: ANTD_PATH,
-  varFile: path.join(STYLE_PATH, "basic.less"),
+  varFile: resolve(STYLE_PATH, "./basic.less"),
   themeVariables: Array.from(
     new Set([
       ...Object.keys({ ...antDarkVars, ...myDarkVars }),
