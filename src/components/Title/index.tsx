@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { BellOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import Avatar from "./Avatar";
-import darkTheme from "@/style/dark.json";
-import lightTheme from "@/style/light.json";
+import darkTheme from "@/style/theme_Json/dark.json";
+import lightTheme from "@/style/theme_Json/light.json";
 import "./index.less";
 
 const { Search } = Input;
