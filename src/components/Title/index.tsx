@@ -1,7 +1,9 @@
-import { Col, Popover, Row, Menu, Image, Input, Switch } from "antd";
+import { Col, Popover, Row, Menu, Image, Input, Switch, Button } from "antd";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { BellOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import loginSlice from "@/redux/reducers/login";
 import Avatar from "./Avatar";
 import darkTheme from "@/style/theme_Json/dark.json";
 import lightTheme from "@/style/theme_Json/light.json";
@@ -11,10 +13,11 @@ const { Search } = Input;
 
 const Title: React.FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [current, setCurrent] = useState<string>("mail");
-  const [theme, setTheme] = useState<string>("");
+  // const [theme, setTheme] = useState<string>("");
   const toMain = () => {
-    console.log("toMain");
+    history.push("/main");
   };
   const onModeSwitch = (mode: boolean) => {
     if (mode) {
@@ -33,6 +36,9 @@ const Title: React.FC = () => {
   };
   const onSearch = () => {
     console.log("search");
+  };
+  const loginShow = () => {
+    dispatch(loginSlice.actions.updateState({ loginModalVisible: true }));
   };
   return (
     <Col span={24}>
@@ -70,7 +76,10 @@ const Title: React.FC = () => {
                 <BellOutlined />
               </div>
               <div className="avatar">
-                <Avatar />
+                {/* <Avatar /> */}
+                <Button type="primary" onClick={loginShow}>
+                  登录
+                </Button>
               </div>
             </div>
           </Col>

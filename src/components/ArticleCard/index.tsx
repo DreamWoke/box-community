@@ -7,11 +7,7 @@ const ArticleCard: React.FC = () => {
   return (
     <div className="article-card">
       <div className="article-card-title">标题一标题一标题一</div>
-      <div className="article-card-content">
-        内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本
-        内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本
-        内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本内容文本内容本
-      </div>
+      <div className="article-card-content"></div>
       <div className="article-card-footer">
         <Button>
           <CaretUpOutlined />

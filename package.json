@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js src --fix",
     "start": "cross-env NODE_ENV=development mode=dev webpack-dev-server --config ./scripts/config/webpack.config.dev.ts",
-    "start:prod": "cross-env mode=prod webpack --config ./scripts/config/webpack.config.dev.ts",
+    "start:prod": "cross-env NODE_ENV=production mode=prod webpack-dev-server --config ./scripts/config/webpack.config.dev.ts",
     "build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.config.prod.ts"
   },
   "husky": {
@@ -80,6 +80,7 @@
     "@reduxjs/toolkit": "^1.6.1",
     "antd": "^4.16.9",
     "axios": "^0.21.1",
+    "path": "^0.12.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",

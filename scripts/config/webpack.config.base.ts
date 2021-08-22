@@ -26,7 +26,7 @@ fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/theme.json"), JSON.stringify(
 const options = {
   stylesDir: STYLE_PATH,
   antDir: ANTD_PATH,
-  publicPath: PUBLIC_PATH,
+  publicPath: isProd ? PUBLIC_PATH : "",
   varFile: resolve(STYLE_PATH, "./basic.less"),
   themeVariables: Array.from(
     new Set([
@@ -141,6 +141,10 @@ const baseConfig: webpack.Configuration = {
             useShortDoctype: true,
           }
         : false,
+    }),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: process.env.NODE_ENV,
+      ENV_CONFIG: isProd ? productionConfig : developmentConfig,
     }),
   ],
 };
