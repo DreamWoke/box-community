@@ -1,10 +1,11 @@
 import axios, { AxiosPromise, AxiosRequestConfig } from "axios";
+import Cookie from "js-cookie";
 import { message } from "antd";
 import { RequestList } from "./modules";
 
 export const BaseUrlMap = {
-  UserApi: "/api/user",
-  authApi: "/api/auth",
+  UserApi: "api/user",
+  authApi: "api/auth",
 };
 
 interface ServiceParams<T extends keyof RequestList> extends AxiosRequestConfig {
@@ -13,14 +14,11 @@ interface ServiceParams<T extends keyof RequestList> extends AxiosRequestConfig 
 }
 
 type RequestFunc = <T extends keyof RequestList>(params: ServiceParams<T>) => AxiosPromise<RequestList[T]["response"]>;
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
-const Domain = "/api/user";
 const AxiosInstance = axios.create({
-  method: "GET",
+  method: "POST",
   timeout: 10000,
   withCredentials: true,
-  // baseURL: BaseUrlMap.UserApi,
+  baseURL: BaseUrlMap.UserApi,
 });
 
 const processError = async (error: any) => {
@@ -70,9 +68,8 @@ const processError = async (error: any) => {
 };
 
 AxiosInstance.interceptors.request.use((config) => {
-  console.log(config);
-  config.url = `${Domain}/${config.url}`;
-  config.headers["Authorization"] = "22334";
+  config.headers["Authorization"] = Cookie.get("token");
+  config.headers["x-csrf-token"] = Cookie.get("csrfToken");
   return config;
 });
 
@@ -83,7 +80,6 @@ AxiosInstance.interceptors.response.use((response) => {
   }
   const res = response.data;
   if (res.code === 0 || res.status === "0") {
-    // status =>直接调用ufin接口
     return {
       ...response,
       ...res,

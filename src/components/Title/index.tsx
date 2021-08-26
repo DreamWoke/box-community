@@ -1,12 +1,14 @@
 import { Col, Popover, Row, Menu, Image, Input, Switch, Button } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { BellOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import loginSlice from "@/redux/reducers/login";
-import Avatar from "./Avatar";
+import { useDispatch, useSelector } from "react-redux";
+import { BellOutlined } from "@ant-design/icons";
+import loginSlice, { LoginInitialState } from "@/redux/reducers/login";
 import darkTheme from "@/style/theme_Json/dark.json";
 import lightTheme from "@/style/theme_Json/light.json";
+import { RootState } from "@/redux";
+import Service from "@/services";
+import Avatar from "./Avatar";
 import "./index.less";
 
 const { Search } = Input;
@@ -14,21 +16,15 @@ const { Search } = Input;
 const Title: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { token, avatar } = useSelector<RootState, RootState["login"]>((state) => state.login);
   const [current, setCurrent] = useState<string>("mail");
-  // const [theme, setTheme] = useState<string>("");
   const toMain = () => {
     history.push("/main");
   };
   const onModeSwitch = (mode: boolean) => {
-    if (mode) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      window.less.modifyVars(darkTheme);
-    } else {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
-      window.less.modifyVars(lightTheme);
-    }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    window.less.modifyVars(mode ? darkTheme : lightTheme);
   };
   const handleClick = (e: { key: React.SetStateAction<string> }) => {
     console.log("click ", e);
@@ -40,6 +36,13 @@ const Title: React.FC = () => {
   const loginShow = () => {
     dispatch(loginSlice.actions.updateState({ loginModalVisible: true }));
   };
+  useEffect(() => {
+    console.log(token);
+    token &&
+      Service({ url: "getUserInfo", data: {} }).then(({ data }) => {
+        dispatch(loginSlice.actions.updateState({ avatar: data.avatar as LoginInitialState["avatar"] }));
+      });
+  }, [token]);
   return (
     <Col span={24}>
       <div className="title">
@@ -76,10 +79,13 @@ const Title: React.FC = () => {
                 <BellOutlined />
               </div>
               <div className="avatar">
-                {/* <Avatar /> */}
-                <Button type="primary" onClick={loginShow}>
-                  登录
-                </Button>
+                {token ? (
+                  <Avatar avatar={avatar} />
+                ) : (
+                  <Button type="primary" onClick={loginShow}>
+                    登录
+                  </Button>
+                )}
               </div>
             </div>
           </Col>

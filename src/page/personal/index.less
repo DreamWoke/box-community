@@ -1,0 +1,60 @@
+@import "@/style/basic.less";
+.personal {
+  padding: 0 0 20px 0;
+  margin: 10px 20px;
+  background: @article-card-bg;
+  .backImg {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    max-height: 350px;
+    background: @menu-highlight-color;
+    &-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+  .avatar-upload {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 20px;
+    .ant-upload.ant-upload-select-picture-card {
+      width: 160px;
+      height: 160px;
+    }
+    .ant-upload-list-picture-card-container {
+      width: 160px;
+      height: 160px;
+    }
+  }
+  &-material {
+    padding: 20px 20px 20px 200px;
+    &-header {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    &-body {
+      overflow: hidden;
+      transition: height 300ms ease-out 0s;
+    }
+    &-footer {
+      margin-top: 20px;
+      position: relative;
+      &-view {
+        width: 160px;
+        cursor: pointer;
+        color: fade(@text-color, 50%);
+        :hover {
+          color: @text-color;
+        }
+      }
+      &-btn {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+}
