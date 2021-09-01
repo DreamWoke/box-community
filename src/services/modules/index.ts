@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import getUserInfoByIdMap from "./auth";
+import getUserInfoByIdMap from "./user";
 
 export interface RequestDefine<P, R> {
   params: P;

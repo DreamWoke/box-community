@@ -9,15 +9,14 @@ import Cookies from "js-cookie";
 export interface LoginInitialState {
   token: string;
   loginModalVisible: boolean;
-  avatar: "";
 }
 
 export const logoutThunk = createAsyncThunk("login/logout", async (_, { dispatch }) => {
   Cookies.remove("token");
-  dispatch(loginSlice.actions.updateState({ token: "", avatar: "" }));
+  dispatch(loginSlice.actions.updateState({ token: "" }));
 });
 
-const initialState: LoginInitialState = { token: "", loginModalVisible: false, avatar: "" };
+const initialState: LoginInitialState = { token: "", loginModalVisible: false };
 
 const loginSlice = createSlice({
   name: "login",

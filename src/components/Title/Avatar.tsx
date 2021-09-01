@@ -16,7 +16,7 @@ const Avatar: React.FC<AvatarProps> = ({ avatar }: AvatarProps) => {
   const logout = () => {
     dispatch(logoutThunk());
   };
-
+  console.log(avatar);
   return (
     <Dropdown
       arrow

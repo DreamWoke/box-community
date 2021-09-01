@@ -4,8 +4,8 @@ import path, { resolve } from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-const AntDesignThemePlugin = require("antd-theme-webpack-plugin");
-const { getLessVars } = require("antd-theme-generator");
+// const AntDesignThemePlugin = require("antd-theme-webpack-plugin");
+// const { getLessVars } = require("antd-theme-generator");
 import { CONFIG_MAP, PROJECT_PATH, STYLE_PATH, ANTD_PATH } from "../constants";
 
 const isProd = process.env.NODE_ENV === "production";
@@ -13,30 +13,30 @@ const isProd = process.env.NODE_ENV === "production";
 const { productionConfig, developmentConfig } = CONFIG_MAP;
 const { PUBLIC_PATH, PROJECT_NAME } = isProd ? productionConfig : developmentConfig;
 
-const themeVariables = getLessVars(resolve(STYLE_PATH, "./basic.less"));
-const antDarkVars = getLessVars(resolve(ANTD_PATH, "./lib/style/themes/dark.less"));
-const myDarkVars = getLessVars(resolve(STYLE_PATH, "./theme/dark.less"));
-const antLightVars = getLessVars(resolve(ANTD_PATH, "./lib/style/themes/compact.less"));
-const myLightVars = getLessVars(resolve(STYLE_PATH, "./theme/compact.less"));
+// const themeVariables = getLessVars(resolve(STYLE_PATH, "./basic.less"));
+// const antDarkVars = getLessVars(resolve(ANTD_PATH, "./lib/style/themes/dark.less"));
+// const myDarkVars = getLessVars(resolve(STYLE_PATH, "./theme/dark.less"));
+// const antLightVars = getLessVars(resolve(ANTD_PATH, "./lib/style/themes/compact.less"));
+// const myLightVars = getLessVars(resolve(STYLE_PATH, "./theme/compact.less"));
 
-fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/dark.json"), JSON.stringify({ ...antDarkVars, ...myDarkVars }));
-fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/light.json"), JSON.stringify({ ...antLightVars, ...myLightVars }));
-fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/theme.json"), JSON.stringify(themeVariables));
+// fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/dark.json"), JSON.stringify({ ...antDarkVars, ...myDarkVars }));
+// fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/light.json"), JSON.stringify({ ...antLightVars, ...myLightVars }));
+// fs.writeFileSync(resolve(STYLE_PATH, "./theme_Json/theme.json"), JSON.stringify(themeVariables));
 
-const options = {
-  stylesDir: STYLE_PATH,
-  antDir: ANTD_PATH,
-  publicPath: isProd ? PUBLIC_PATH : "",
-  varFile: resolve(STYLE_PATH, "./basic.less"),
-  themeVariables: Array.from(
-    new Set([
-      ...Object.keys({ ...antDarkVars, ...myDarkVars }),
-      ...Object.keys({ ...antLightVars, ...myLightVars }),
-      ...Object.keys(themeVariables),
-    ])
-  ),
-  generateOnce: false,
-};
+// const options = {
+//   stylesDir: STYLE_PATH,
+//   antDir: ANTD_PATH,
+//   publicPath: isProd ? PUBLIC_PATH : "",
+//   varFile: resolve(STYLE_PATH, "./basic.less"),
+//   themeVariables: Array.from(
+//     new Set([
+//       ...Object.keys({ ...antDarkVars, ...myDarkVars }),
+//       ...Object.keys({ ...antLightVars, ...myLightVars }),
+//       ...Object.keys(themeVariables),
+//     ])
+//   ),
+//   generateOnce: false,
+// };
 
 const baseConfig: webpack.Configuration = {
   entry: {
@@ -118,7 +118,7 @@ const baseConfig: webpack.Configuration = {
       chunkFilename: "static/css/[name].[contenthash:8].css",
       ignoreOrder: false,
     }),
-    new AntDesignThemePlugin(options),
+    // new AntDesignThemePlugin(options),
     new HtmlWebpackPlugin({
       title: PROJECT_NAME,
       template: resolve(PROJECT_PATH, "./public/index.html"),

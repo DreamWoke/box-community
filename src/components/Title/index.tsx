@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { BellOutlined } from "@ant-design/icons";
-import loginSlice, { LoginInitialState } from "@/redux/reducers/login";
-import darkTheme from "@/style/theme_Json/dark.json";
-import lightTheme from "@/style/theme_Json/light.json";
+import loginSlice from "@/redux/reducers/login";
+import { getUserInfoThunk } from "@/redux/reducers/user";
+// import darkTheme from "@/style/theme_Json/dark.json";
+// import lightTheme from "@/style/theme_Json/light.json";
 import { RootState } from "@/redux";
 import Service from "@/services";
 import Avatar from "./Avatar";
@@ -16,16 +17,17 @@ const { Search } = Input;
 const Title: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { token, avatar } = useSelector<RootState, RootState["login"]>((state) => state.login);
+  const { token } = useSelector<RootState, RootState["login"]>((state) => state.login);
+  const { avatar } = useSelector<RootState, RootState["user"]>((state) => state.user);
   const [current, setCurrent] = useState<string>("mail");
   const toMain = () => {
     history.push("/main");
   };
-  const onModeSwitch = (mode: boolean) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    window.less.modifyVars(mode ? darkTheme : lightTheme);
-  };
+  // const onModeSwitch = (mode: boolean) => {
+  //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //   // @ts-ignore
+  //   window.less.modifyVars(mode ? darkTheme : lightTheme);
+  // };
   const handleClick = (e: { key: React.SetStateAction<string> }) => {
     console.log("click ", e);
     setCurrent(e.key);
@@ -37,11 +39,7 @@ const Title: React.FC = () => {
     dispatch(loginSlice.actions.updateState({ loginModalVisible: true }));
   };
   useEffect(() => {
-    console.log(token);
-    token &&
-      Service({ url: "getUserInfo", data: {} }).then(({ data }) => {
-        dispatch(loginSlice.actions.updateState({ avatar: data.avatar as LoginInitialState["avatar"] }));
-      });
+    token && dispatch(getUserInfoThunk());
   }, [token]);
   return (
     <Col span={24}>
@@ -67,14 +65,14 @@ const Title: React.FC = () => {
           </Col>
           <Col span={6}>
             <div className="title-row-right">
-              <div className="switch-mode">
+              {/* <div className="switch-mode">
                 <Switch
                   onChange={onModeSwitch}
                   // checkedChildren={<CheckOutlined />}
                   // unCheckedChildren={<CloseOutlined />}
                   defaultChecked={false}
                 />
-              </div>
+              </div> */}
               <div className="notifications">
                 <BellOutlined />
               </div>
